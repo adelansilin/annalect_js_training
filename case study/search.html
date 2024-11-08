@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Search</title>
+</head>
+<body>
+    <h2>Employee Search</h2>
+    <form id="search-form" action="search-result.html" method="get" >
+        <div class="search-row">
+            <label for="employee-id">Employee ID:</label>
+            <input type="text" id="employee-id" name="employee-id" required>
+        </div>
+        
+        <div class="search-row">
+            <label for="first-name">First Name:</label>
+            <input type="text" id="first-name" name="first-name" required >
+        </div>
+
+        <div class="search-row">
+            <label for="last-name">Last Name:</label>
+            <input type="text" id="last-name" name="last-name" required>
+        </div>
+
+        <div class="search-row">
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" placeholder="MM/DD/YYYY">
+        </div>
+
+        <div class="search-row">
+            <label for="doj">Date of Joining:</label>
+            <input type="date" id="doj" name="doj" placeholder="MM/DD/YYYY">
+        </div>
+
+        <div class="search-row">
+            <label for="grade">Grade:</label>
+            <select id="grade" name="grade">
+                <option value="">Select Grade</option>
+                <option value="M1">M1</option>
+                <option value="M2">M2</option>
+                <option value="M3">M3</option>
+                <option value="M4">M4</option>
+                <option value="M5">M5</option>
+                <option value="M6">M6</option>
+            </select>
+        </div>
+
+        <p>*At least one of the fields should be selected</p>
+        <button type="submit">Search</button>
+    </form>
+
+   
+    
+</html>

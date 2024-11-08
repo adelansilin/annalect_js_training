@@ -1,0 +1,87 @@
+<html>
+  <head>
+    <script>
+      //logic functions
+      function calculateArea(l, b) {
+        return l * b;
+      }
+      console.log(calculateArea(2, 4));
+
+      function calculatePerimeter(l, b) {
+        const l1 = parseInt(l);
+        const b1 = parseInt(b);
+        return 2 * (l1 + b1);
+      }
+
+      //ui functions
+      function area() {
+        const length = document.getElementById("iplength");
+        const breadth = document.getElementById("ipbreadth");
+
+        const area = calculateArea(length.value, breadth.value);
+        const message = "Area is  " + area;
+        const spanelement = document.getElementById("message");
+        spanelement.innerHTML = message;
+      }
+
+      function perimeter() {
+        const length = document.getElementById("iplength");
+        const breadth = document.getElementById("ipbreadth");
+
+        const perimeter = calculatePerimeter(length.value, breadth.value);
+        const message = "Perimeter is  " + perimeter;
+        const spanelement = document.getElementById("message");
+        spanelement.innerHTML = message;
+      }
+
+      function both() {
+        const length = document.getElementById("iplength");
+        const breadth = document.getElementById("ipbreadth");
+        const area = calculateArea(length.value, breadth.value);
+        const perimeter = calculatePerimeter(length.value, breadth.value);
+        const message = `Area is ${area} Perimeter is ${perimeter}`;
+        const spanelement = document.getElementById("message");
+        spanelement.innerHTML = message;
+      }
+
+      function result() {
+        const areaChecked = document.getElementById("area").checked;
+        const perimeterChecked = document.getElementById("perimeter").checked;
+
+        if (areaChecked && perimeterChecked) {
+          both();
+        } else if (areaChecked) {
+          area();
+        } else if (perimeterChecked) {
+          perimeter();
+        } else {
+          const spanelement = document.getElementById("message");
+          spanelement.innerHTML =
+            "Please select at least one option (Area or Perimeter).";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <label for="iplength">Enter the length : </label>
+    <input
+      type="range"
+      id="iplength"
+      min="1"
+      max="100"
+      step="1"
+      oninput="document.getElementById('len-value').innerText = this.value"
+    />
+    <span id="len-value"> </span>
+
+    <label for="ipbreadth">Enter the breadth : </label>
+    <input type="number" id="ipbreadth" min="0" max="100" step="1" value="50" />
+
+    <input type="checkbox" id="area" name="what" value="a1" /> Area
+    <input type="checkbox" id="perimeter" name="what" value="a2" />Perimeter
+
+    <button id="result" onclick="result()">RESULT</button>
+    <br />
+    <span id="message"></span>
+  </body>
+</html>

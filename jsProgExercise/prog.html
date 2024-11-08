@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <script>
+      function str(name) {
+        return name.toUpperCase();
+      }
+      console.log(str("adel"));
+
+      function product(x, y) {
+        return x * y;
+      }
+      console.log(product(2, 3));
+
+      const x = [1, 2, 3, 4, 5];
+      function arr(x) {
+        let l = x.length;
+        let sum = 0;
+
+        for (let i = 0; i < l; i++) {
+          sum = sum + x[i];
+        }
+        return sum;
+      }
+      console.log(arr(x));
+
+      let mul;
+      function mul5(y) {
+        const arr = [];
+
+        for (let i = 1; i <= 5; i++) {
+          mul = y * i;
+          arr.push(mul);
+        }
+        return arr;
+      }
+      console.log(mul5(2));
+
+      let ip = { length: 4, breadth: 5 };
+      function obj(ip) {
+        let area = ip.length * ip.breadth;
+        let perimeter = 2 * (ip.length + ip.breadth);
+        return { area, perimeter };
+      }
+      console.log(obj(ip));
+
+      function f1() {
+        let x = document.getElementById("t1");
+        let y = document.getElementById("out");
+
+        y.innerHTML = mul5(x.value);
+      }
+    </script>
+  </head>
+
+  <body>
+    <button onclick="f1()">GENERATE</button>
+    <input type="text" , id="t1" , placeholder="enter the number" />
+    <span id="out"></span>
+  </body>
+</html>

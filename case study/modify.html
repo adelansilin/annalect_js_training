@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modify Employee Record</title>
+  </head>
+  <body>
+    <h2>Modify Employee Record</h2>
+    <form id="modify-form" action="update.php" method="post">
+      <label for="employee-id">Employee ID:</label>
+      <input type="text" id="employee-id" name="employee-id" />
+      <br />
+
+      <label for="first-name">First Name*:</label>
+      <input type="text" id="first-name" name="first-name" required />
+      <br />
+
+      <label for="last-name">Last Name*:</label>
+      <input type="text" id="last-name" name="last-name" required />
+      <br />
+
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" name="dob" />
+      <br />
+
+      <label for="doj">Date of Joining *:</label>
+      <input type="date" id="doj" name="doj" required />
+      <br />
+
+      <label for="grade">Grade:</label>
+      <select id="grade" name="grade">
+        <option value="M1">M1</option>
+        <option value="M2">M2</option>
+        <option value="M3">M3</option>
+        <option value="M4">M4</option>
+        <option value="M5">M5</option>
+        <option value="M6">M6</option>
+      </select>
+      <br />
+
+      <p>*Mandatory fields</p>
+      <button type="submit">Save</button>
+      <a href="search.html">Return to Search</a>
+    </form>
+    <button type="submit" onclick="alert('File has been modified !')">
+      Upload Data
+    </button>
+  </body>
+</html>
