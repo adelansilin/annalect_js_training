@@ -1,0 +1,54 @@
+<html>
+  <head> </head>
+  <body>
+    <input type="textbox" id="noOfMultiples" onchange="checkZero()" />
+    <select id="dropdown">
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select>
+    <button id="result" onclick="mul()">RESULT</button>
+    <br />
+    <span id="message"></span>
+  </body>
+
+  <script>
+    function checkZero() {
+      if (document.getElementById("noOfMultiples").value == 0) {
+        document.getElementById("dropdown").disabled = true;
+        document.getElementById("result").disabled = true;
+        return;
+      } else {
+        document.getElementById("dropdown").disabled = false;
+        document.getElementById("result").disabled = false;
+      }
+    }
+
+    function dropdown() {
+      const dd = document.getElementById("dropdown");
+      let opt = parseInt(dd.value);
+      return opt;
+    }
+    console.log(dropdown());
+    function calculateMul(x) {
+      let multiplier = dropdown();
+      let arr = [];
+      for (let i = 1; i <= x; i++) {
+        ans = multiplier * i;
+        arr.push(`${x}*${i} = ${ans}`);
+      }
+      return arr;
+    }
+
+    function mul() {
+      const ip = document.getElementById("noOfMultiples");
+      const mul = calculateMul(ip.value);
+      const message = document.getElementById("message");
+      let content = "";
+      for (let chai of mul) {
+        content += "<br/>" + t;
+      }
+      message.innerHTML = content;
+    }
+  </script>
+</html>
