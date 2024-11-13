@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <script>
+      const products = [
+        { id: 1, name: "apple", price: 3000 },
+        { id: 2, name: "samsung", price: 5000 },
+        { id: 3, name: "realme", price: 8000 },
+      ];
+      //add products
+      const addproducts = (product) => {
+        if (!products.find((i) => i.id == product.id)) {
+          products.push(product);
+          return true;
+        } else {
+          return false;
+        }
+      };
+      console.log(addproducts({ id: 4, name: "motto", price: 9000 }));
+
+      //update products
+      const updateproducts = (product) => {
+        const productToUpdate = products.find((i) => i.id == product.id);
+        if (productToUpdate) {
+          productToUpdate.name = product.name;
+          productToUpdate.price = product.price;
+          return true;
+        } else {
+          return false;
+        }
+      };
+
+      //view products
+      const viewproducts = () => {
+        return products;
+      };
+      console.log(viewproducts());
+
+      //add discount
+      const addDiscount = (discount) => {
+        const dupProducts = products.map((i) => {
+          const dupelement = { ...i };
+          dupelement.price =
+            dupelement.price - (dupelement.price * discount) / 100;
+          return dupelement;
+        });
+        return dupProducts;
+      };
+      console.log(addDiscount(10));
+    </script>
+  </head>
+  <body></body>
+</html>

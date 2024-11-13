@@ -1,16 +1,19 @@
 <html>
   <head>
     <script>
+      // Function to convert a string to uppercase
       function str(name) {
         return name.toUpperCase();
       }
       console.log(str("adel"));
 
+      // Function to calculate the product of two numbers
       function product(x, y) {
         return x * y;
       }
       console.log(product(2, 3));
 
+      // Function to calculate the sum of all elements in an array
       const x = [1, 2, 3, 4, 5];
       function arr(x) {
         let l = x.length;
@@ -23,6 +26,7 @@
       }
       console.log(arr(x));
 
+      // Function to generate an array containing the first 5 multiples of a number
       let mul;
       function mul5(y) {
         const arr = [];
@@ -35,6 +39,7 @@
       }
       console.log(mul5(2));
 
+      // Function to calculate the area and perimeter of a rectangle
       let ip = { length: 4, breadth: 5 };
       function obj(ip) {
         let area = ip.length * ip.breadth;
@@ -43,6 +48,7 @@
       }
       console.log(obj(ip));
 
+      // Function to display the first 5 multiples of a number input by the user
       function f1() {
         let x = document.getElementById("t1");
         let y = document.getElementById("out");

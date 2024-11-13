@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Product Management System</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="script.js"></script>
+  </head>
+
+  <body>
+    <h2>Add New Product</h2>
+    <form id="add-product-form">
+      <input
+        type="text"
+        name="product-id"
+        placeholder="Enter unique product ID"
+        required
+      />
+      <input
+        type="text"
+        name="product-name"
+        placeholder="Enter product name"
+        required
+      />
+      <input
+        type="number"
+        name="product-price"
+        placeholder="Enter product price"
+      />
+      <button type="button" id="add-product-btn">Add Product</button>
+      <button type="button" id="update-product-btn">Update Product</button>
+    </form>
+    <span class="message" id="product-message"></span>
+
+    <div>
+      <h2>Product List</h2>
+      <ul id="view-products"></ul>
+      <button type="button" id="view-product-btn">view Products</button>
+    </div>
+
+    <!-- <div>
+      <h2>Update Product Information</h2>
+      <form id="update-product-form">
+        <label>Product ID:</label>
+        <input type="text" name="update-product-id" required />
+
+        <label>New Price:</label>
+        <input type="number" name="update-product-price" required />
+
+        <button type="button" id="update-product-btn">Update Product</button>
+      </form>
+      <div class="message" id="update-product-message"></div>
+    </div> -->
+
+    <div>
+      <h2>Apply Discount to Products</h2>
+      <form id="apply-discount-form">
+        <label for="discount-percentage">Discount Percentage:</label>
+        <input
+          type="number"
+          id="discount-percentage"
+          placeholder="Enter discount percentage"
+          required
+        />
+        <button type="button" id="apply-discount-btn">Apply Discount</button>
+      </form>
+      <div class="message" id="apply-discount-message"></div>
+    </div>
+  </body>
+</html>

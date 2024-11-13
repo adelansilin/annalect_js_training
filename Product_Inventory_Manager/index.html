@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products Inventory Controller</title>
+    <script src="script.js"></script>
+  </head>
+ 
+<body>
+
+    <h1>Products Inventory Controller</h1>
+    
+    
+    <div>
+        <h2>Sort by:</h2>
+        <select id="sort-criteria">
+            <option value="price">Price</option>
+            <option value="dateAdded">Date Added</option>
+            <option value="quantity">Quantity</option>
+        </select>
+    </div>
+
+    
+    <div>
+        <button id="sortBtn">Sort</button>
+    </div>
+
+    
+    <div>
+        <h2>Search by:</h2>
+        <input type="text" id="criteria" placeholder="Enter name or category to search">
+        <button id ="searchBtn"> Search</button>
+    </div>
+
+    
+    <div id="radioBtn">
+        <label><input type="radio" name="sort" value="category"> Category</label>
+        <label><input type="radio" name="sort" value="price"> Price</label>
+        <label><input type="radio" name="sort" value="name"> Name</label>
+        <label><input type="radio" name="sort" value="quantity"> Quantity</label>
+    </div>
+
+    <div>
+        <h3>Product List</h3>
+        <ul id="product-list">
+           
+        </ul>
+    </div>
+    <span id="message"></span>
+
+</body>
+</html>
+
+  </body>
+</html>
