@@ -169,12 +169,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchCriteria = document.querySelector('input[name="sort"]:checked');
     const searchValue = document.getElementById("criteria").value;
     const messageSpan = document.getElementById("message");
+    messageSpan.innerHTML = "";
 
     if (searchCriteria && searchValue) {
       const criteria = searchCriteria.value;
       const searchResults = searchProductByCriteria(criteria, searchValue);
       displayProducts(searchResults);
-    } else if (filteredProducts.length === 0) {
+    } else {
+      //console.log("No products found for the given criteria.");
       messageSpan.textContent = "No products found for the given criteria.";
     }
   });

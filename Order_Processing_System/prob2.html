@@ -9,13 +9,7 @@
 
   <body>
     <h2>Place New Order</h2>
-    <form id="place-order-form">
-      <input
-        type="text"
-        name="order-id"
-        placeholder="Enter unique order ID"
-        required
-      />
+    <div>
       <input
         type="text"
         name="customer-name"
@@ -23,17 +17,20 @@
         required
       />
       <input
-        type="text"
-        name="products"
-        placeholder="Enter product IDs (comma separated)"
+        type="number"
+        name="phn-no"
+        placeholder="Enter contact number"
         required
       />
-      <button type="button" id="place-order-btn">Place Order</button>
-    </form>
-    <div id="place-order-message"></div>
+      <select id="products"></select>
+      <button id="add-btn">ADD</button>
+      <button id="place-order-btn">Place Order</button>
+      <br />
+      <span id="place-order-message"></span>
+    </div>
 
     <h2>Orders List</h2>
-    <div id="order-list-body"></div>
+    <ul id="order-list-body"></ul>
 
     <div>
       <h2>Cancel Order</h2>

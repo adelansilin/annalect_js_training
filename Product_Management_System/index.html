@@ -4,6 +4,7 @@
     <title>Product Management System</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
   </head>
 
@@ -38,20 +39,6 @@
       <button type="button" id="view-product-btn">view Products</button>
     </div>
 
-    <!-- <div>
-      <h2>Update Product Information</h2>
-      <form id="update-product-form">
-        <label>Product ID:</label>
-        <input type="text" name="update-product-id" required />
-
-        <label>New Price:</label>
-        <input type="number" name="update-product-price" required />
-
-        <button type="button" id="update-product-btn">Update Product</button>
-      </form>
-      <div class="message" id="update-product-message"></div>
-    </div> -->
-
     <div>
       <h2>Apply Discount to Products</h2>
       <form id="apply-discount-form">
@@ -64,6 +51,7 @@
         />
         <button type="button" id="apply-discount-btn">Apply Discount</button>
       </form>
+      <ul id="discountedProducts"></ul>
       <div class="message" id="apply-discount-message"></div>
     </div>
   </body>

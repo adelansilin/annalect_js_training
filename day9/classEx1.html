@@ -1,0 +1,76 @@
+<html>
+  <script>
+    class Task {
+      constructor(taskid, taskname, taskstatus) {
+        this.taskid = taskid;
+        this.taskname = taskname;
+        this.taskstatus = taskstatus;
+      }
+    }
+
+    class TaskLogic {
+      constructor() {
+        this.tasks = [];
+      }
+
+      addTask(newTask) {
+        const task = this.tasks.find((task) => task.taskid == newTask.taskid);
+        if (task) {
+          return "alreadyExists";
+        } else {
+          this.tasks.push(newTask);
+          return "added";
+        }
+      }
+
+      getAllTasksBasedonStatus(statusgiven) {
+        const status = this.tasks.filter(
+          (task) => task.taskstatus == statusgiven
+        );
+        return status;
+      }
+
+      updatetask(updatedtask) {
+        const taskToBeEdited = this.tasks.find(
+          (p) => p.taskid == updatedtask.taskid
+        );
+
+        if (taskToBeEdited) {
+          taskToBeEdited.taskname = updatedtask.taskname;
+          taskToBeEdited.taskstatus = updatedtask.taskstatus;
+          return "Updated";
+        }
+
+        return "id not found";
+      }
+
+      getAllTasks() {
+        return this.tasks;
+      }
+    }
+
+    let x = new Task(23, "abc", "stopped");
+    let tl = new TaskLogic();
+    let a = tl.addTask(x);
+    console.log(a);
+    let y = new Task(24, "def", "running");
+    let b = tl.addTask(y);
+    console.log(b);
+    let z = new Task(24, "ghi", "walking");
+    let c = tl.addTask(z);
+    console.log(c);
+
+    let allTasks = tl.getAllTasks();
+    console.log(allTasks);
+    let findTask = tl.getAllTasksBasedonStatus("running");
+    console.log(findTask);
+
+    let updateTask = tl.updatetask({
+      taskid: 23,
+      taskname: "adel",
+      taskstatus: "stopped",
+    });
+    console.log(updateTask);
+    console.log(allTasks);
+  </script>
+</html>

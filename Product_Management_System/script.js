@@ -7,6 +7,9 @@ let products = [
 const addproducts = (product) => {
   if (!products.find((i) => i.id == product.id)) {
     products.push(product);
+    console.log("Product Added Successfully!");
+    let message = document.getElementById("product-message");
+    message.textContent = "Product Added Successfully!";
     return true;
   } else {
     return false;
@@ -35,25 +38,34 @@ const updateproducts = (productid) => {
     const curprice = document.querySelector(
       'input[name = "product-price"]'
     ).value;
-    console.log(curname, curprice, "abcd");
-    if (curname.length > 0 && curprice.length > 0) {
-      console.log("herewe come");
+
+    if (curname.length !== 0) {
       productToBeFound.name = curname;
-      productToBeFound.price = curprice;
-    } else if (curname === "") {
-      console.log("hi");
-      //productToBeFound.name = products[i].name;
-      productToBeFound.price = curprice;
-    } else {
-      console.log("hiiiiii");
-      productToBeFound.name = curname;
-      //productToBeFound.price = products[i].price;
     }
+    if (curprice.length !== 0) {
+      productToBeFound.price = curprice;
+    }
+
+    let message = document.getElementById("product-message");
+    message.textContent = "Product Updated Successfully!";
   }
 };
 
 //add discount
-const addDiscount = (discount) => {};
+const addDiscount = (discount) => {
+  const productList = document.getElementById("apply-discount-message");
+  productList.innerHTML = "";
+  const dupProducts = products.map((i) => {
+    const dupelement = { ...i };
+    dupelement.price = dupelement.price - (dupelement.price * discount) / 100;
+    return dupelement;
+  });
+  dupProducts.forEach((product) => {
+    const liout = document.createElement("li");
+    liout.textContent = `productID : ${product.id} - Product Name : ${product.name} - Product Price : ${product.price}`;
+    productList.appendChild(liout);
+  });
+};
 
 document.addEventListener("DOMContentLoaded", () => {
   const addbtn = document.getElementById("add-product-btn");
@@ -73,5 +85,11 @@ document.addEventListener("DOMContentLoaded", () => {
   updatebtn.addEventListener("click", () => {
     const curid = document.querySelector('input[name="product-id"]').value;
     updateproducts(curid);
+  });
+
+  const discountbtn = document.getElementById("apply-discount-btn");
+  discountbtn.addEventListener("click", () => {
+    const ip = document.getElementById("discount-percentage").value;
+    addDiscount(ip);
   });
 });
