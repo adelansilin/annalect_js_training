@@ -118,6 +118,30 @@ function addOrders() {
     const productList = document.getElementById("order-list-body");
     const liout = document.createElement("li");
     liout.textContent = `product id : ${product.id} - product name : ${product.name} - price : ${product.price}`;
+    // Add delete button to the list item
+    const deleteIcon = document.createElement("span");
+    deleteIcon.innerHTML = "&#128465;";
+    deleteIcon.classList.add("delete-icon");
+
+    // Attach delete functionality
+    deleteIcon.addEventListener("click", () => {
+      // Remove the product from the current order
+      const index = curOrder.listOfProducts.findIndex(
+        (p) => p.id === product.id
+      );
+      if (index !== -1) {
+        curOrder.totalAmount -= curOrder.listOfProducts[index].price;
+        curOrder.listOfProducts.splice(index, 1);
+
+        // Remove the list item from the UI
+        productList.removeChild(liout);
+
+        // Update the message
+        message.innerText = `Removed ${product.name} from the order.`;
+      }
+    });
+
+    liout.appendChild(deleteIcon);
     productList.appendChild(liout);
   } else {
     message.innerText = "Product not found.";
@@ -139,13 +163,41 @@ function placeOrder() {
   }
 }
 
+// document.addEventListener("DOMContentLoaded", () => {
+//   dropdownDisplay(products);
+//   const addBtn = document.getElementById("add-btn");
+//   addBtn.addEventListener("click", () => {
+//     addOrders();
+//   });
+//   const placeOrderBtn = document.getElementById("place-order-btn");
+//   placeOrderBtn.addEventListener("click", () => {
+//     placeOrder();
+//   });
+// });
+
 document.addEventListener("DOMContentLoaded", () => {
-  dropdownDisplay(products);
+  const cartButton = document.querySelector(".cart-button");
+  const orderList = document.querySelector(".order-list");
+  const closeButton = document.querySelector(".close-button");
   const addBtn = document.getElementById("add-btn");
+  const placeOrderBtn = document.getElementById("place-order-btn");
+
+  // Toggle the order list panel
+  cartButton.addEventListener("click", () => {
+    orderList.classList.add("active");
+  });
+
+  // Close the order list panel
+  closeButton.addEventListener("click", () => {
+    orderList.classList.remove("active");
+  });
+
+  // Initialize dropdown and order placement logic
+  dropdownDisplay(products);
   addBtn.addEventListener("click", () => {
     addOrders();
   });
-  const placeOrderBtn = document.getElementById("place-order-btn");
+
   placeOrderBtn.addEventListener("click", () => {
     placeOrder();
   });

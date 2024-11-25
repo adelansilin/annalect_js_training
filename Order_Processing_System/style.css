@@ -1,0 +1,238 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+header {
+  background-color: rgba(102, 102, 102, 1);
+  position: relative;
+  text-align: center;
+  padding: 20px;
+  font-family: "MuseoSans-1000", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  line-height: 1.3;
+  font-size: 30px;
+  color: white;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+header h1 {
+  text-align: center;
+  margin: 0;
+  font-size: 30px;
+  position: relative;
+}
+
+h2 {
+  font-family: "MuseoSans-700", sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  line-height: 1.3;
+  font-size: 1 em;
+  color: gray;
+  margin: 0 0 10px;
+}
+
+.container ul,
+li,
+button,
+label,
+span,
+select,
+input::placeholder,
+input {
+  font-family: "MuseoSans-300", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.7;
+  font-size: 0.7rem;
+  color: rgba(64, 64, 64, 1);
+  margin: 0;
+}
+
+/* add order */
+.form-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin: 0.5rem;
+}
+
+.add-order {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  background-color: #f9f9f9;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+label {
+  width: 150px;
+  text-align: left;
+}
+
+.form-row input,
+select {
+  width: 150px;
+}
+
+/* Button Styles */
+#add-btn,
+#place-order-btn {
+  padding: 0.5rem;
+  font-size: 0.7rem;
+  color: white;
+  background-color: rgba(47, 195, 199, 1);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 6rem;
+}
+
+button:hover {
+  background-color: rgba(47, 175, 180, 1);
+  transform: scale(1.05);
+}
+
+button:active {
+  background-color: rgba(47, 155, 160, 1);
+  transform: scale(0.95);
+}
+
+/* cart button */
+.cart-button {
+  position: absolute;
+  right: 20px;
+  top: 40%;
+  cursor: pointer;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  transition: background-color 0.3s ease;
+  border-radius: 10%;
+}
+
+.cart-button:hover {
+  background-color: rgba(47, 195, 199, 1);
+  transform: scale(1.05);
+}
+
+.cart-button:focus {
+  outline: none;
+}
+
+/* cart slider */
+.order-list {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 300px;
+  /* height: 100vh; */
+  background-color: white;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+  transition: right 0.3s ease;
+  padding: 1em;
+}
+
+#place-order-btn {
+  width: 9em;
+  align-items: center;
+}
+
+.order-list.active {
+  right: 0;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #333;
+  border: none;
+  outline: none;
+  border-radius: 10%;
+}
+
+.close-button:hover {
+  background-color: rgba(47, 195, 199, 1);
+  transform: scale(1.05);
+}
+
+.order-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+  height: 36em;
+}
+
+#order-list-body {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid rgba(200, 200, 200, 0.5);
+  border-radius: 5px;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+li {
+  text-align: left;
+  margin: 5px 0;
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* delete btn */
+.delete-icon {
+  margin-left: 10px;
+  cursor: pointer;
+  color: #ff4d4d;
+  font-size: 1.5em;
+}
+
+.delete-icon:hover {
+  color: #ff1a1a;
+}
+
+/* footer */
+footer {
+  background-color: rgba(102, 102, 102, 1);
+  text-align: center;
+  padding: 10px;
+}
+.footer-link {
+  text-decoration: none;
+  color: white;
+  margin: 0px 10px;
+  background-color: none;
+  font-size: 0.8rem;
+}
+.copyright {
+  color: whitesmoke;
+  font-family: "Merriweather", serif;
+  font-size: 0.8rem;
+  margin: 10px 0 0;
+}

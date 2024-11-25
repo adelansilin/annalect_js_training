@@ -1,8 +1,8 @@
 //addAProduct
 let products = [
-  { id: 1, name: "apple", price: 3000 },
-  { id: 2, name: "samsung", price: 5000 },
-  { id: 3, name: "realme", price: 8000 },
+  { id: 1, name: "iPhone", price: 3000 },
+  { id: 2, name: "Samsung", price: 5000 },
+  { id: 3, name: "Realme", price: 8000 },
 ];
 const addproducts = (product) => {
   if (!products.find((i) => i.id == product.id)) {

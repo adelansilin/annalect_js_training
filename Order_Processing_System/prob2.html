@@ -4,35 +4,56 @@
     <title>Order Processing System</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
   </head>
 
   <body>
-    <h2>Place New Order</h2>
-    <div>
-      <input
-        type="text"
-        name="customer-name"
-        placeholder="Enter customer name"
-        required
-      />
-      <input
-        type="number"
-        name="phn-no"
-        placeholder="Enter contact number"
-        required
-      />
-      <select id="products"></select>
+    <header>
+      Order Processing System
+      <button class="cart-button">&#128722;</button>
+    </header>
+
+    <div class="add-order">
+      <h2>Place New Order</h2>
+      <div class="form-row">
+        <label for="customer-name">Customer Name: </label>
+        <input
+          type="text"
+          name="customer-name"
+          placeholder="Enter customer name"
+          required
+        />
+      </div>
+
+      <div class="form-row">
+        <label for="phn-no">Contact Number: </label>
+        <input
+          type="number"
+          name="phn-no"
+          placeholder="Enter contact number"
+          required
+        />
+      </div>
+
+      <div class="form-row">
+        <label for="products">Select your product: </label>
+        <select id="products"></select>
+      </div>
       <button id="add-btn">ADD</button>
-      <button id="place-order-btn">Place Order</button>
+
       <br />
       <span id="place-order-message"></span>
     </div>
 
-    <h2>Orders List</h2>
-    <ul id="order-list-body"></ul>
+    <div class="order-list">
+      <button class="close-button">&#10005;</button>
+      <h2>Orders List</h2>
+      <ul id="order-list-body"></ul>
+      <button id="place-order-btn">Place Order</button>
+    </div>
 
-    <div>
+    <!-- <div>
       <h2>Cancel Order</h2>
       <form id="cancel-order-form">
         <input
@@ -60,6 +81,28 @@
       <div id="summary-order-message"></div>
 
       <div id="summary-order-result"></div>
-    </div>
+    </div> -->
+
+    <footer>
+      <a
+        class="footer-link"
+        href="https://www.linkedin.com/in/adel-mariam-a-865564281/"
+        target="=_blank"
+        >LinkedIn</a
+      >
+      <a
+        class="footer-link"
+        href="https://www.instagram.com/adel_ansilin/"
+        target="=_blank"
+        >Instagram</a
+      >
+      <a
+        class="footer-link"
+        href="mailto:adelansilin2002@gmail.com"
+        target="=_blank"
+        >G-mail</a
+      >
+      <p class="copyright">© adel ansilin.</p>
+    </footer>
   </body>
 </html>

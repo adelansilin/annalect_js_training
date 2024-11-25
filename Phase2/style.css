@@ -7,7 +7,6 @@ body {
 }
 
 body {
-  font-family: Arial, sans-serif;
   color: gray;
   display: flex;
   flex-direction: column;
@@ -84,10 +83,9 @@ li {
 
 /* footer */
 footer {
-  background-color: rgba(47, 195, 199, 1);
+  background-color: rgba(102, 102, 102, 1);
   text-align: center;
   padding: 10px;
-  position: relative;
 }
 .footer-link {
   text-decoration: none;
