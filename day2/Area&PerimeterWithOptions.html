@@ -1,11 +1,10 @@
 <html>
   <head>
     <script>
-      //logic functions
+      // Logic functions
       function calculateArea(l, b) {
         return l * b;
       }
-      console.log(calculateArea(2, 4));
 
       function calculatePerimeter(l, b) {
         const l1 = parseInt(l);
@@ -13,53 +12,47 @@
         return 2 * (l1 + b1);
       }
 
-      //ui functions
+      // UI functions
       function area() {
-        const length = document.getElementById("iplength");
-        const breadth = document.getElementById("ipbreadth");
-
-        const area = calculateArea(length.value, breadth.value);
-        const message = "Area is  " + area;
-        const spanelement = document.getElementById("message");
-        spanelement.innerHTML = message;
+        const length = $("#iplength").val();
+        const breadth = $("#ipbreadth").val();
+        const area = calculateArea(length, breadth);
+        $("#message").html(`Area is ${area}`);
       }
 
       function perimeter() {
-        const length = document.getElementById("iplength");
-        const breadth = document.getElementById("ipbreadth");
-
-        const perimeter = calculatePerimeter(length.value, breadth.value);
-        const message = "Perimeter is  " + perimeter;
-        const spanelement = document.getElementById("message");
-        spanelement.innerHTML = message;
+        const length = $("#iplength").val();
+        const breadth = $("#ipbreadth").val();
+        const perimeter = calculatePerimeter(length, breadth);
+        $("#message").html(`Perimeter is ${perimeter}`);
       }
 
       function both() {
-        const length = document.getElementById("iplength");
-        const breadth = document.getElementById("ipbreadth");
-        const area = calculateArea(length.value, breadth.value);
-        const perimeter = calculatePerimeter(length.value, breadth.value);
-        const message = `Area is ${area} Perimeter is ${perimeter}`;
-        const spanelement = document.getElementById("message");
-        spanelement.innerHTML = message;
+        const length = $("#iplength").val();
+        const breadth = $("#ipbreadth").val();
+        const area = calculateArea(length, breadth);
+        const perimeter = calculatePerimeter(length, breadth);
+        $("#message").html(`Area is ${area} Perimeter is ${perimeter}`);
       }
 
-      function result() {
-        const areaChecked = document.getElementById("area").checked;
-        const perimeterChecked = document.getElementById("perimeter").checked;
+      $(document).ready(function () {
+        $("#result").click(function () {
+          const areaChecked = $("#area").is(":checked");
+          const perimeterChecked = $("#perimeter").is(":checked");
 
-        if (areaChecked && perimeterChecked) {
-          both();
-        } else if (areaChecked) {
-          area();
-        } else if (perimeterChecked) {
-          perimeter();
-        } else {
-          const spanelement = document.getElementById("message");
-          spanelement.innerHTML =
-            "Please select at least one option (Area or Perimeter).";
-        }
-      }
+          if (areaChecked && perimeterChecked) {
+            both();
+          } else if (areaChecked) {
+            area();
+          } else if (perimeterChecked) {
+            perimeter();
+          } else {
+            $("#message").html(
+              "Please select at least one option (Area or Perimeter)."
+            );
+          }
+        });
+      });
     </script>
   </head>
   <body>
