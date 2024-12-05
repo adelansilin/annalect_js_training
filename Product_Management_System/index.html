@@ -14,8 +14,17 @@
       <!-- view -->
       <div class="view">
         <h2>Product List</h2>
-        <ul id="view-products"></ul>
-        <button type="button" id="view-product-btn">view Products</button>
+        <table id="view-products">
+          <thead>
+            <tr>
+              <th>Product ID</th>
+              <th>Product Name</th>
+              <th>Product Price</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <button type="button" id="view-product-btn">View Products</button>
       </div>
       <!-- //add -->
       <div class="add">
@@ -69,8 +78,19 @@
           </div>
         </form>
         <!-- <ul id="discountedProducts"></ul> -->
-        <div class="message" id="apply-discount-message"></div>
+        <!-- <div class="message" id="apply-discount-message"></div> -->
+        <table class="message" id="apply-discount-message">
+          <thead>
+            <tr>
+              <th>Product ID</th>
+              <th>Product Name</th>
+              <th>Product Price</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
         <button type="button" id="apply-discount-btn">Apply Discount</button>
+        <span class="message" id="discount-message"></span>
       </div>
     </div>
 

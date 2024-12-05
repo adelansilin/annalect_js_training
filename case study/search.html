@@ -1,55 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Employee Search</title>
-</head>
-<body>
-    <h2>Employee Search</h2>
-    <form id="search-form" action="search-result.html" method="get" >
-        <div class="search-row">
-            <label for="employee-id">Employee ID:</label>
-            <input type="text" id="employee-id" name="employee-id" required>
-        </div>
-        
-        <div class="search-row">
-            <label for="first-name">First Name:</label>
-            <input type="text" id="first-name" name="first-name" required >
+    <link rel="stylesheet" href="search.css" />
+    <script src="search.js"></script>
+    <script src="logout.html"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById("sliding-menu");
+        if (menu.style.right === "0px") {
+          menu.style.right = "-100%";
+          console.log("clickes");
+        } else {
+          menu.style.right = "0px";
+          console.log("not clicked");
+        }
+      }
+      document.addEventListener("DOMContentLoaded", () => {
+        const closeButton = document.querySelector(".close-button");
+        closeButton.addEventListener("click", () => {
+          const menu = document.getElementById("sliding-menu");
+          menu.style.right = "-100%";
+        });
+      });
+      function logout() {
+        // This redirects to logout.html where the modal will be shown
+        window.location.href = "logout.html";
+      }
+    </script>
+  </head>
+
+  <body>
+    <header>
+      Employee Management System
+      <button class="login-button" onclick="toggleMenu()">
+        <i class="fas fa-user-circle"></i>
+      </button>
+    </header>
+    <p id="loginError" class="error"></p>
+
+    <div class="sliding-menu" id="sliding-menu">
+      <button class="close-button">&#10005;</button>
+      <div class="sliding-content">
+        <a href="search.html">Search</a>
+        <a href="" class="modify-link">Modify</a>
+        <a href="view.html">View</a>
+        <button class="sliding-btn" onclick="logout()">
+          <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+        </button>
+      </div>
+    </div>
+
+    <div class="container">
+      <form id="search-form" action="search-result.html" method="get">
+        <h2>Employee Search</h2>
+        <div class="form-row">
+          <label for="employee-id">Employee ID</label>
+          <input type="text" id="employee-id" name="employee-id" />
         </div>
 
-        <div class="search-row">
-            <label for="last-name">Last Name:</label>
-            <input type="text" id="last-name" name="last-name" required>
+        <div class="form-row">
+          <label for="first-name">First Name</label>
+          <input type="text" id="first-name" name="first-name" />
         </div>
 
-        <div class="search-row">
-            <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob" name="dob" placeholder="MM/DD/YYYY">
+        <div class="form-row">
+          <label for="last-name">Last Name</label>
+          <input type="text" id="last-name" name="last-name" />
         </div>
 
-        <div class="search-row">
-            <label for="doj">Date of Joining:</label>
-            <input type="date" id="doj" name="doj" placeholder="MM/DD/YYYY">
+        <div class="form-row">
+          <label for="dob">Date of Birth</label>
+          <input type="date" id="dob" name="dob" placeholder="MM/DD/YYYY" />
         </div>
 
-        <div class="search-row">
-            <label for="grade">Grade:</label>
-            <select id="grade" name="grade">
-                <option value="">Select Grade</option>
-                <option value="M1">M1</option>
-                <option value="M2">M2</option>
-                <option value="M3">M3</option>
-                <option value="M4">M4</option>
-                <option value="M5">M5</option>
-                <option value="M6">M6</option>
-            </select>
+        <div class="form-row">
+          <label for="doj">Date of Joining</label>
+          <input type="date" id="doj" name="doj" placeholder="MM/DD/YYYY" />
+        </div>
+
+        <div class="form-row">
+          <label for="grade">Grade</label>
+          <select id="grade" name="grade">
+            <option value="">Select Grade</option>
+            <option value="M1">M1</option>
+            <option value="M2">M2</option>
+            <option value="M3">M3</option>
+            <option value="M4">M4</option>
+            <option value="M5">M5</option>
+            <option value="M6">M6</option>
+          </select>
         </div>
 
         <p>*At least one of the fields should be selected</p>
+        <p id="error-message"></p>
         <button type="submit">Search</button>
-    </form>
+      </form>
+    </div>
 
-   
-    
+    <footer>
+      <a
+        class="footer-link"
+        href="https://www.linkedin.com/in/adel-mariam-a-865564281/"
+        target="=_blank"
+        >LinkedIn</a
+      >
+      <a
+        class="footer-link"
+        href="https://www.instagram.com/adel_ansilin/"
+        target="=_blank"
+        >Instagram</a
+      >
+      <a
+        class="footer-link"
+        href="mailto:adelansilin2002@gmail.com"
+        target="=_blank"
+        >G-mail</a
+      >
+      <p class="copyright">© adel ansilin.</p>
+    </footer>
+  </body>
 </html>

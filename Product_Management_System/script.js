@@ -5,66 +5,116 @@ let products = [
   { id: 3, name: "Realme", price: 8000 },
 ];
 const addproducts = (product) => {
-  if (!products.find((i) => i.id == product.id)) {
-    products.push(product);
-    console.log("Product Added Successfully!");
-    let message = document.getElementById("product-message");
-    message.textContent = "Product Added Successfully!";
-    return true;
-  } else {
+  const message = document.getElementById("product-message");
+
+  // Input validation
+  if (!product.id || !product.name || !product.price) {
+    message.textContent = "Please provide all the inputs to add a product.";
     return false;
   }
+  if (products.find((i) => i.id == product.id)) {
+    message.textContent = `Product with ID ${product.id} already exists.`;
+    return false;
+  }
+
+  // Add product to the list
+  products.push(product);
+  message.textContent = "Product Added Successfully!";
+  return true;
 };
 
 //view products
 function viewProducts(productArray) {
-  const productList = document.getElementById("view-products");
-  productList.innerHTML = "";
+  const productTableBody = document.querySelector("#view-products tbody");
+  productTableBody.innerHTML = "";
 
   productArray.forEach((product) => {
-    const liout = document.createElement("li");
-    liout.textContent = `productID : ${product.id} - Product Name : ${product.name} - Product Price : ${product.price}`;
-    productList.appendChild(liout);
+    const row = document.createElement("tr");
+
+    const idCell = document.createElement("td");
+    idCell.textContent = product.id;
+
+    const nameCell = document.createElement("td");
+    nameCell.textContent = product.name;
+
+    const priceCell = document.createElement("td");
+    priceCell.textContent = product.price;
+
+    row.appendChild(idCell);
+    row.appendChild(nameCell);
+    row.appendChild(priceCell);
+
+    productTableBody.appendChild(row);
   });
 }
 
-//update product
+// Update Product
 const updateproducts = (productid) => {
-  let productToBeFound = products.find((i) => i.id == productid);
-  if (productToBeFound) {
-    const curname = document.querySelector(
-      'input[name = "product-name"]'
-    ).value;
-    const curprice = document.querySelector(
-      'input[name = "product-price"]'
-    ).value;
+  const curname = document.querySelector('input[name="product-name"]').value;
+  const curprice = document.querySelector('input[name="product-price"]').value;
+  const message = document.getElementById("product-message");
 
-    if (curname.length !== 0) {
-      productToBeFound.name = curname;
-    }
-    if (curprice.length !== 0) {
-      productToBeFound.price = curprice;
-    }
-
-    let message = document.getElementById("product-message");
-    message.textContent = "Product Updated Successfully!";
+  // Input validation
+  if (!productid || (!curname && !curprice)) {
+    message.textContent = "Please provide the inputs to update the product.";
+    return false;
   }
+
+  // Find the product by ID
+  let productToBeFound = products.find((i) => i.id == productid);
+  if (!productToBeFound) {
+    message.textContent = `Product with ID ${productid} not found.`;
+    return false;
+  }
+
+  // Update product details
+  if (curname.length !== 0) {
+    productToBeFound.name = curname;
+  }
+  if (curprice.length !== 0) {
+    productToBeFound.price = curprice;
+  }
+
+  message.textContent = "Product Updated Successfully!";
+  return true;
 };
 
 //add discount
 const addDiscount = (discount) => {
-  const productList = document.getElementById("apply-discount-message");
+  const discountMessage = document.getElementById("discount-message");
+  const productList = document
+    .getElementById("apply-discount-message")
+    .querySelector("tbody");
   productList.innerHTML = "";
+
+  if (!discount || isNaN(discount) || discount <= 0) {
+    discountMessage.textContent = "Please provide a valid discount percentage.";
+    return;
+  }
   const dupProducts = products.map((i) => {
     const dupelement = { ...i };
     dupelement.price = dupelement.price - (dupelement.price * discount) / 100;
     return dupelement;
   });
   dupProducts.forEach((product) => {
-    const liout = document.createElement("li");
-    liout.textContent = `productID : ${product.id} - Product Name : ${product.name} - Product Price : ${product.price}`;
-    productList.appendChild(liout);
+    const row = document.createElement("tr");
+
+    const idCell = document.createElement("td");
+    idCell.textContent = product.id;
+
+    const nameCell = document.createElement("td");
+    nameCell.textContent = product.name;
+
+    const priceCell = document.createElement("td");
+    priceCell.textContent = product.price.toFixed(2); // To display price with two decimals
+
+    row.appendChild(idCell);
+    row.appendChild(nameCell);
+    row.appendChild(priceCell);
+
+    productList.appendChild(row);
   });
+  discountMessage.textContent = `Discount of ${discount}% applied successfully!`;
 };
 
 document.addEventListener("DOMContentLoaded", () => {

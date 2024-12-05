@@ -1,5 +1,20 @@
 //
 
+window.onload = function () {
+  function logout() {
+    sessionStorage.removeItem("loggedIn");
+    window.location.href = "login.html"; // Redirect to login page
+  }
+  // Check if the user is logged in
+  if (!sessionStorage.getItem("loggedIn")) {
+    document.getElementById("loginError").innerText =
+      "You must be logged in to perform this action.";
+    setTimeout(function () {
+      window.location.href = "login.html"; // Redirect if not logged in
+    }, 1000);
+  }
+};
+
 // Functional logic
 class Employee {
   constructor(id, firstName, lastName, dob, doj, grade) {
@@ -167,10 +182,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const isEmptyQuery = Object.values(query).every((value) => value === "");
 
     if (isEmptyQuery) {
-      // Display error message
       const errorMessage = document.getElementById("error-message");
       errorMessage.innerText = "Please provide at least one input to search.";
-      return; // Stop further processing
+      return;
     }
 
     if (
@@ -207,6 +221,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (employee) {
         EmployeeUI.populateForm(employee);
       }
+      employeeManager.updateEmployee(employeeId, query);
     }
   });
 
@@ -221,4 +236,45 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   //modify link func
+  // Handle "Modify" link click in the sliding content
+  const modifyLink = document.querySelector('.sliding-content a[href=""]');
+  modifyLink.addEventListener("click", (event) => {
+    event.preventDefault(); // Prevent default behavior
+
+    // Switch the form to Modify mode
+    const searchForm = document.getElementById("search-form");
+    const submitButton = searchForm.querySelector('button[type="submit"]');
+    submitButton.innerText = "Modify";
+
+    // Focus on the Employee ID field to encourage entering an ID
+    const employeeIdField = document.getElementById("employee-id");
+    employeeIdField.focus();
+
+    // Optional: Clear other form fields
+    searchForm.reset();
+
+    // Change heading (optional)
+    document.querySelector("h2").innerText = "Employee Modify";
+
+    // Attach keydown listener to handle Enter key for searching
+    employeeIdField.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        const employeeId = event.target.value.trim();
+        const employee = employeeManager.employees.find(
+          (emp) => emp.id === employeeId
+        );
+
+        if (employee) {
+          EmployeeUI.populateForm(employee);
+          document.getElementById("error-message").innerText = ""; // Clear any error message
+        } else {
+          EmployeeUI.resetForm();
+          document.querySelector("h2").innerText = "Employee Modify";
+          document.getElementById("error-message").innerText =
+            "Employee not found!";
+        }
+      }
+    });
+  });
 });

@@ -91,7 +91,8 @@ h2 {
   width: 9em;
   align-items: center;
 }
-#view-products,
+
+/* #view-products,
 #discountedProducts,
 #apply-discount-message {
   list-style-type: none;
@@ -100,8 +101,10 @@ h2 {
   border: 1px solid rgba(200, 200, 200, 0.5);
   border-radius: 5px;
   box-sizing: border-box;
-  overflow-y: scroll;
-}
+  overflow-y: auto;
+  table-layout: fixed;
+  display: block;
+} */
 
 /* scrollbar */
 
@@ -208,18 +211,80 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
-  display: inline-block;
-  overflow-y: auto;
 }
 
-table th,
+/* table th,
 table td {
   border: 1px solid #ddd;
   padding: 8px;
   text-align: left;
+  table-layout: fixed;
 }
 
 table th {
   background-color: #f2f2f2;
   font-weight: bold;
+  table-layout: fixed;
+}  */
+
+/* new */
+#view-products,
+#apply-discount-message {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  position: relative;
+}
+
+#view-products thead,
+#apply-discount-message thead {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #f2f2f2;
+}
+
+#view-products,
+#apply-discount-message {
+  display: block;
+  max-height: 300px;
+  overflow-y: auto;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+#view-products th,
+#view-products td,
+#apply-discount-message th,
+#apply-discount-message td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+  width: 33.33%;
+}
+
+#view-products tbody tr,
+#apply-discount-message tbody tr {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+#view-products::-webkit-scrollbar,
+#apply-discount-message::-webkit-scrollbar {
+  width: 8px;
+}
+
+#view-products::-webkit-scrollbar-thumb,
+#apply-discount-message::-webkit-scrollbar {
+  background-color: gray;
+  border-radius: 4px;
+}
+
+#view-products::-webkit-scrollbar-track,
+#apply-discount-message::-webkit-scrollbar {
+  background: rgba(240, 240, 240, 0.8);
 }

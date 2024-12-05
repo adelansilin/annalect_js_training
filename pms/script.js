@@ -66,17 +66,34 @@ const updateproducts = (productid) => {
 
 //add discount
 const addDiscount = (discount) => {
-  const productList = document.getElementById("apply-discount-message");
-  productList.innerHTML = "";
+  const productList = document
+    .getElementById("apply-discount-message")
+    .querySelector("tbody");
+  productList.innerHTML = ""; // Clear any existing content
+
   const dupProducts = products.map((i) => {
     const dupelement = { ...i };
     dupelement.price = dupelement.price - (dupelement.price * discount) / 100;
     return dupelement;
   });
+
   dupProducts.forEach((product) => {
-    const liout = document.createElement("li");
-    liout.textContent = `productID : ${product.id} - Product Name : ${product.name} - Product Price : ${product.price}`;
-    productList.appendChild(liout);
+    const row = document.createElement("tr");
+
+    const idCell = document.createElement("td");
+    idCell.textContent = product.id;
+
+    const nameCell = document.createElement("td");
+    nameCell.textContent = product.name;
+
+    const priceCell = document.createElement("td");
+    priceCell.textContent = product.price.toFixed(2); // To display price with two decimals
+
+    row.appendChild(idCell);
+    row.appendChild(nameCell);
+    row.appendChild(priceCell);
+
+    productList.appendChild(row);
   });
 };
 

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manufacturing Company Login</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* General Reset */
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        /* overflow-x: hidden; */
+      }
+
+      body {
+        margin: 0;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        justify-content: space-between;
+        height: 100vh;
+        background-color: #f6f4f2;
+        font-family: "Monda";
+      }
+
+
+      /* Header Styling */
+      header {
+        background-color: #425664;
+        text-align: center;
+        padding: 20px;
+        font-family: "Open Sans";
+        font-weight: 800;
+        font-style: normal;
+        line-height: 1.3;
+        font-size: 30px;
+        color: white;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      
+
+      /* footer */
+      footer {
+        background-color: #425664;
+        text-align: center;
+        padding: 10px;
+      }
+      .footer-link {
+        text-decoration: none;
+        color: white;
+        margin: 0px 10px;
+        background-color: none;
+        font-size: 0.8rem;
+      }
+      .copyright {
+        color: whitesmoke;
+        font-family: "Monda";
+        font-size: 0.8rem;
+        margin: 10px 0 0;
+      }
+
+      .footer-link:hover {
+        transform: scale(1.05);
+      }
+
+      
+
+
+      .login-box {
+        background-color: #f6f4f2; 
+        border: 1px solid #ccc; 
+        border-radius: 5px; 
+        padding: 20px; 
+        width: 300px; 
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .login-box h2 {
+        margin: 0 0 15px; 
+        font-size: 24px; 
+        text-align: center; 
+        font-family: "Lubalin Med";
+      }
+
+      .login-box input[type="text"],
+      .login-box input[type="password"] {
+        width: 70%; 
+        padding: 10px; 
+        margin-bottom: 15px; 
+        border: 1px solid #ccc;  
+        font-family: "Monda";
+      }
+
+      .login-box button {
+        background-color: #425664; 
+        color: white; 
+        padding: 10px;
+        border: none; 
+        border-radius: 4px; 
+        cursor: pointer; 
+        font-size: 16px; 
+        width: 40%; 
+        font-family: "Monda";
+      }
+
+      .login-box button:hover {
+        background-color: #425664; 
+      }
+
+      /* Add styling for the image */
+.content img {
+  width: 73%; 
+  height: 76vh; 
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.content{
+    display: flex;
+}
+
+#error{
+  color: red;
+  padding-top: 20px;
+  font-size: small;
+}
+
+    </style>
+  </head>
+  <body>
+    <header>Employee Management System</header>
+
+    <div class="content">
+        <img src="/Annalect_JS_Training/case study/images/pexels-divinetechygirl-1181400.jpg">
+      
+
+      <div class="login-box">
+        <h2>Login</h2>
+
+        <input id="username" type="text" placeholder="Username" required />
+        <input id="password" type="password" placeholder="Password" required />
+        <button value="Login" onclick="tryLogin()">LOGIN</button>
+        <span id="error"></span>
+      </div>
+    </div>
+</div>
+
+    <script>
+
+      class Login {
+        constructor(userid, password) {
+          this.userid = userid;
+          this.password = password;
+        }
+
+        trylogin() {
+          if (this.userid === "adel_ansilin" && this.password === "12345") {
+            sessionStorage.setItem("loggedIn", "true");
+            sessionStorage.setItem("username", this.userid);
+            document.location = "search.html";
+          } else {
+            document.getElementById("error").textContent =
+              "Invalid username or password.";
+          }
+        }
+      }
+
+      function tryLogin() {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        const login = new Login(username, password);
+        login.trylogin();
+      }
+   
+    </script>
+
+    <footer>
+      <a
+        class="footer-link"
+        href="https://www.linkedin.com/in/adel-mariam-a-865564281/"
+        target="=_blank"
+        >LinkedIn</a
+      >
+      <a
+        class="footer-link"
+        href="https://www.instagram.com/adel_ansilin/"
+        target="=_blank"
+        >Instagram</a
+      >
+      <a
+        class="footer-link"
+        href="mailto:adelansilin2002@gmail.com"
+        target="=_blank"
+        >G-mail</a
+      >
+      <p class="copyright">© adel ansilin.</p>
+    </footer>
+  </body>
+</html>
